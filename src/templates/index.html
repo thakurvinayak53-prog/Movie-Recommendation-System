@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Claus | Smart Movie Discovery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- USER BAR -->
+<div class="user-bar">
+    Welcome, {{ current_user.username }}
+    <a href="/change-password">Change Password</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Claus</div>
+    <div class="tagline">Because You Deserve Better Stories</div>
+</div>
+
+<!-- HERO SECTION -->
+<div class="hero">
+    <h1>Find Your Next Favourite Movie</h1>
+    <p>Your free time, we make it worth.</p>
+
+    <form method="POST" class="search-box">
+        <input type="text" id="movieInput" name="movie_name"
+               placeholder="Search Movie..."
+               autocomplete="off" required>
+        <button type="submit">Search</button>
+
+        <div id="suggestions" class="suggestions-box"></div>
+    </form>
+</div>
+
+<!-- ================= TRENDING MOVIES ================= -->
+{% if trending %}
+<h2 style="text-align:center; margin-top:40px;">🔥 Trending Movies</h2>
+
+<div class="movie-container">
+    {% for movie in trending %}
+    <div class="movie-card">
+        <div class="movie-poster">
+            {% if movie.poster and movie.poster != "N/A" %}
+                <img src="{{ movie.poster }}" alt="{{ movie.title }}">
+            {% else %}
+                <img src="https://via.placeholder.com/300x450?text=No+Image">
+            {% endif %}
+        </div>
+
+        <div class="movie-info">
+            <h3>{{ movie.title }}</h3>
+            <p><strong>Year:</strong> {{ movie.year }}</p>
+            <p><strong>IMDb:</strong> {{ movie.rating }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- ================= RECOMMENDATIONS ================= -->
+{% if recommendations %}
+<h2 style="text-align:center; margin-top:40px;">🎯 Recommended For You</h2>
+
+<div class="movie-container">
+    {% for movie in recommendations %}
+    <div class="movie-card">
+        <div class="movie-poster">
+            {% if movie.poster and movie.poster != "N/A" %}
+                <img src="{{ movie.poster }}" alt="{{ movie.title }}">
+            {% else %}
+                <img src="https://via.placeholder.com/300x450?text=No+Image">
+            {% endif %}
+        </div>
+
+        <div class="movie-info">
+            <h3>{{ movie.title }}</h3>
+            <p><strong>Year:</strong> {{ movie.year }}</p>
+            <p><strong>IMDb:</strong> {{ movie.rating }}</p>
+            <p><strong>Plot:</strong> {{ movie.plot }}</p>
+            <p><strong>Cast:</strong> {{ movie.actors }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- FOOTER -->
+<div class="footer">
+    Built with ❤️ using Machine Learning | Claus Major Project
+</div>
+
+<script>
+const input = document.getElementById("movieInput");
+const suggestionsDiv = document.getElementById("suggestions");
+
+input.addEventListener("input", function() {
+    const value = this.value;
+
+    if (value.length >= 2) {
+        fetch(`/search?q=${value}`)
+            .then(res => res.json())
+            .then(data => {
+                suggestionsDiv.innerHTML = "";
+
+                data.forEach(title => {
+                    const div = document.createElement("div");
+                    div.textContent = title;
+                    div.classList.add("suggestion-item");
+
+                    div.onclick = () => {
+                        input.value = title;
+                        suggestionsDiv.innerHTML = "";
+                    };
+
+                    suggestionsDiv.appendChild(div);
+                });
+            });
+    } else {
+        suggestionsDiv.innerHTML = "";
+    }
+});
+</script>
+
+</body>
+</html>

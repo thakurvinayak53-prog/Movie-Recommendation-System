@@ -1,0 +1,307 @@
+/* ===== GLOBAL RESET ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: #f1f5f9;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: #111827;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.tagline {
+    color: #94a3b8;
+}
+
+/* ===== USER HEADER ===== */
+
+.user-bar {
+    text-align: right;
+    padding: 15px 60px;
+    background: #0f172a;
+}
+
+.user-bar a {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+.user-bar a:hover {
+    text-decoration: underline;
+}
+
+/* ===== HERO SECTION ===== */
+
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+}
+
+.hero p {
+    margin-top: 10px;
+    color: #cbd5e1;
+}
+
+/* ===== SEARCH BOX ===== */
+
+.search-box {
+    margin-top: 25px;
+    position: relative;
+}
+
+.search-box input {
+    padding: 12px;
+    width: 260px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+.search-box button {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: none;
+    background: #38bdf8;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: 0.3s;
+}
+
+.search-box button:hover {
+    background: #0ea5e9;
+}
+
+/* ===== SUGGESTIONS ===== */
+
+.suggestions-box {
+    width: 260px;
+    margin: auto;
+    background: #1e293b;
+    border-radius: 8px;
+    margin-top: 5px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.suggestion-item:hover {
+    background: #334155;
+}
+
+/* ===== MOVIE GRID ===== */
+
+.movie-container {
+    padding: 40px 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.movie-card {
+    background: #1e293b;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 15px;
+}
+
+.movie-info h3 {
+    margin-bottom: 8px;
+}
+
+.movie-info p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #cbd5e1;
+}
+
+.match-score {
+    margin-top: 8px;
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+/* ===== FOOTER ===== */
+
+.footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    background: #111827;
+    color: #94a3b8;
+}
+
+/* ===================================== */
+/* ===== CINEMATIC AUTH PAGE ===== */
+/* ===================================== */
+
+.auth-body {
+    height: 100vh;
+    background: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dark overlay */
+.auth-body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Brand Heading */
+
+.brand-heading {
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    font-size: 48px;
+    font-weight: 700;
+    z-index: 2;
+}
+
+/* Special C */
+.brand-c {
+    color: #38bdf8;
+    font-size: 58px;
+    text-shadow: 0 0 15px #38bdf8;
+}
+
+/* Rest of name */
+.brand-laus {
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+/* Auth Card */
+
+.auth-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(30, 41, 59, 0.85);
+    padding: 45px;
+    width: 380px;
+    border-radius: 14px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0px 15px 40px rgba(0,0,0,0.6);
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.auth-card h2 {
+    margin-bottom: 20px;
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+.auth-card button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #38bdf8;
+    color: #0f172a;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.auth-card button:hover {
+    background: #0ea5e9;
+    transform: scale(1.02);
+}
+
+.auth-card a {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
+}
+
+.error-msg {
+    color: #f87171;
+    margin-bottom: 10px;
+}
+
+/* Animation */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

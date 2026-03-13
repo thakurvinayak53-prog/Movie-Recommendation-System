@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ movie.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="movie-detail">
+    <img src="{{ movie.poster }}" class="poster">
+
+    <div class="movie-info">
+        <h1>{{ movie.title }} ({{ movie.year }})</h1>
+        <p><strong>IMDb Rating:</strong> {{ movie.rating }}</p>
+        <p><strong>Genre:</strong> {{ movie.genre }}</p>
+        <p><strong>Runtime:</strong> {{ movie.runtime }}</p>
+        <p><strong>Cast:</strong> {{ movie.actors }}</p>
+        <p><strong>Story:</strong> {{ movie.plot }}</p>
+        <a href="/">⬅ Back</a>
+    </div>
+</div>
+
+</body>
+</html>
